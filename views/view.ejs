@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Uploaded</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+          padding: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 100px;">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    group name
+                </td>
+                <td>
+                    tagline
+                </td>
+                <td>
+                    about
+                </td>
+            </tr>
+            <% for(let i =0; i<records.length; i++){ %>
+               <tr>
+                    <td>
+                        <%=records[i]['attributes']['name']%>
+                    </td>
+                    <td>
+                        <%=records[i]['attributes']['tagline']%>
+                        <!-- <audio controls id="player">
+                            <source src=" {% if record.file %} {{ record.file.url }} {% endif %}" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio> -->
+                    </td>
+                    <td>
+                        <%=records[i]['attributes']['about']%>
+                    </td>
+                </tr>
+            <%}%>
+       </tbody>
+    </table>
+    </div>
+<br><br>
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 100px;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        name
+                    </td>
+                    <td>
+                        format
+                    </td>
+                    <td>
+                        image
+                    </td>
+                </tr>
+                <% for(let i =0; i<media.length; i++){ %>
+                   <tr>
+                        <td>
+                            <%=media[i]['name']%>
+                        </td>
+                        <td>
+                            <%=media[i]['mime']%>
+                            <!-- <audio controls id="player">
+                                <source src=" {% if record.file %} {{ record.file.url }} {% endif %}" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio> -->
+                        </td>
+                        <td>
+                            <img src=("http://localhost:1337"+<%=media[i]['url']%>) alt = "unable to fetch image" >
+                        </td>
+                    </tr>
+                <%}%>
+           </tbody>
+        </table>
+    </div>
+</body>
+</html>

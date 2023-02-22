@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload</title>
+</head>
+<body>
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 100px;">
+        <p style="font-size: 50px;">Upload group details..</p>
+    </div>
+    <!-- {% if audio_path%}
+        <div style="display:flex;justify-content:center;align-items:center;margin-top: 10px;">
+            <a href="{{audio_path}}">{{audio_path}}</a>
+        </div>
+    {%endif%} -->
+    <div id="fileform" style="display:flex;justify-content:center;align-items:center;margin-top: 10px;">
+        <form method="post" enctype="multipart/form-data" >
+
+            <label for="gname"><strong>group name : </strong></label>
+            <input type="text" id="gname" name="gname"><br><br>
+            
+            <label for="tagline"><strong> tagline : </strong></label>
+            <input type="text" id="tagline" name="tagline" ><br><br>
+
+            
+            <label for="about"><strong> about : </strong></label>
+            <input type="text" id="about" name="about" ><br><br>
+
+            <label for="logo"><strong>Upload group logo : </strong></label>
+            <input type="file" name="logo" accept="image/*"><br><br>
+            <!-- <label for="image"><strong>Upload Image: </strong></label>
+            <input type="file" name="image" accept="image/jpeg"><br><br>  -->
+            <button type="submit">Submit</button>
+        
+        </form>
+    </div>
+
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 100px;">
+
+        <p style="font-size: 50px;">View Your Uploaded Files Here..</p>
+    
+    </div>
+
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 10px;">
+
+        <form action="viewuploaded">
+            <button type = "submit">view the uploaded files</button>
+        </form>
+
+    </div>
+
+    
+
+    <!-- {% if messages %}
+        <ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+        </ul>
+    {% endif %} -->
+</body>
+</html>

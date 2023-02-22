@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leader_boards",
+  "info": {
+    "singularName": "leader-board",
+    "pluralName": "leader-boards",
+    "displayName": "leaderBoard",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gold": {
+      "type": "integer"
+    },
+    "silver": {
+      "type": "integer"
+    },
+    "bronze": {
+      "type": "integer"
+    },
+    "points": {
+      "type": "integer"
+    },
+    "bhawanName": {
+      "type": "string"
+    }
+  }
+}

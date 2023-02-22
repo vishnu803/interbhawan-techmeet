@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "problem_statements",
+  "info": {
+    "singularName": "problem-statement",
+    "pluralName": "problem-statements",
+    "displayName": "ProblemStatement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "points": {
+      "type": "integer"
+    }
+  }
+}
