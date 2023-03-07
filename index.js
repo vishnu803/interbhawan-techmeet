@@ -79,14 +79,15 @@ app.get("/leaderboard", function (req, res) {
         if(option==="bhawan"){
 
             const result = {};
-
+            // console.log(data);
             for (const obj of data) {
 
                 const bhawanName = obj.attributes.bhawanName;
                 const medal = obj.attributes.medal;
+                const pointsAdded = obj.attributes.pointsAdded;
 
                 if (!result[bhawanName]) {
-                    result[bhawanName] = { name: bhawanName, Gold: 0, Silver: 0, Bronze: 0 };
+                    result[bhawanName] = { name: bhawanName, Gold: 0, Silver: 0, Bronze: 0, points : 0 };
                 }
                 if (medal === 'Gold') {
                     result[bhawanName].Gold++;
@@ -96,10 +97,12 @@ app.get("/leaderboard", function (req, res) {
                     result[bhawanName].Bronze++;
                 }
 
+                result[bhawanName].points=result[bhawanName].points+pointsAdded;
+
             }
 
             const finalResult = Object.values(result);
-
+            finalResult.sort((a, b) => b.points - a.points);
             console.log(finalResult);
             
             res.render("leaderboard", {data : finalResult});
@@ -135,41 +138,3 @@ app.get("/ps", function (req, res) {
     res.render("ps");
 });
 
-
-            // const bhawanwisedata = data.reduce((acc, curr) => {
-            //     if (acc[curr.attributes.bhawanName]){
-                    
-            //       acc[curr.attributes.bhawanName].push(curr.attributes.medal);
-            //     } else {
-            //       acc[curr.attributes.bhawanName] = [curr.attributes.medal];
-            //     }
-            //     return acc;
-            // }, {});
-            // console.log(bhawanwisedata);
-
-            // const result = [];
-            
-            // for (const [name, medals] of Object.entries(bhawanwisedata)) {
-            // const medalCounts = {
-            //     Gold: 0,
-            //     Silver: 0,
-            //     Bronze: 0,
-            // };
-            
-            // for (const medal of medals) {
-            //     if (medal === 'Gold') {
-            //     medalCounts.Gold++;
-            //     } else if (medal === 'Silver') {
-            //     medalCounts.Silver++;
-            //     } else if (medal === 'Bronze') {
-            //     medalCounts.Bronze++;
-            //     }
-            // }
-            
-            // result.push({
-            //     name,
-            //     ...medalCounts,
-            // });
-            // }
-            
-            // console.log(result);
