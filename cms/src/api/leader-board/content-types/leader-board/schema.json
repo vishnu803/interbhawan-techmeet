@@ -12,19 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "gold": {
-      "type": "integer"
-    },
-    "silver": {
-      "type": "integer"
-    },
-    "bronze": {
-      "type": "integer"
-    },
-    "points": {
-      "type": "integer"
+    "psName": {
+      "type": "string"
     },
     "bhawanName": {
+      "type": "string"
+    },
+    "pointsScored": {
+      "type": "decimal"
+    },
+    "pointsAdded": {
+      "type": "decimal"
+    },
+    "medal": {
       "type": "string"
     }
   }

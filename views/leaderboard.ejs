@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leaderboard</title>
+</head>
+<body>
+    
+    <select id="filter-dropdown">
+        <option value="bhawan">Bhawan</option>
+        <optgroup label="PS">
+            <option value="cognitive garage">cognitive garage</option>
+            <!-- <option value="cognitive garage">PS2</option>
+            <option value="ps3">PS3</option> -->
+        </optgroup>
+    </select>
+    
+    <p>
+      <%=data%> 
+    </p>
+
+    <script>
+        const filterDropdown = document.getElementById('filter-dropdown');
+        filterDropdown.addEventListener('change', () => {
+          const selectedFilter = filterDropdown.value;
+          fetch(`/leaderboard?filter=${selectedFilter}`)
+            .then(response => response.json())
+            .then(data => {
+              // do something with the leaderboard data returned from the backend
+            })
+            .catch(error => {
+              console.error('Error fetching leaderboard:', error);
+            });
+        });
+    </script>
+
+</body>
+</html>
