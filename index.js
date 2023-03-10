@@ -20,6 +20,8 @@ app.get("/", function (req, res) {
     res.render("home");
 });
 
+const BASEURL = 'http://localhost:1337';
+
 function doRequest(url) {
 
     const options = {
@@ -27,7 +29,7 @@ function doRequest(url) {
         method: 'GET',
         url: url,
         headers: {
-            Authorization: 'Bearer 34db27ec7d8990e5a5059dbd38bcfeec388bc47c80aecb67cb6a878e63ec22ac9eccacb6b672bb03bc13d6eaddc4894129f6f272e7a210d653c4159f7f3cec5012889f487fe043e520bafc1def725a0995a2e003de273c7abd428bda58fe21bbb4c0031adbfeab554b18297c4567337648e36927781df2235ef73d335d55db6f'
+            Authorization: 'Bearer /*YOUR API KEY*/'
         }
 
     };
@@ -122,19 +124,37 @@ app.get("/leaderboard", function (req, res) {
 });
 
 app.get("/team", function (req, res) {
+    getRecords('http://localhost:1337/api/teams?populate=*')
+    .then((resp)=>{
+        let data = resp.data;
+        const result = {};
+        // console.log(data);
+        for (const obj of data) {
 
-    //fetch team details 
+            const cellname = obj.attributes.cellname;
+            const name = obj.attributes.name;
+            const gmail = obj.attributes.gmail;
+            const linkedin = obj.attributes.linkedin;
+            const imageurl = obj.attributes.photo.data[0].attributes.url;
 
-    //group them cell wise
+            if (!result[cellname]) {
+                result[cellname] = { cellname: cellname, members : [] };
+            }
+            result[cellname]['members'].push({name : name, gmail : gmail, linkedin : linkedin, imageurl : imageurl});
 
-    
-    res.render("team");
+        }
+        const finalResult = Object.values(result);
+        // console.log(finalResult);
+        res.render("team", {data : finalResult, BASEURL : BASEURL});
+    });
 });
 
 app.get("/ps", function (req, res) {
 
-    //fetch problem statement details
-    
-    res.render("ps");
+    getRecords('http://localhost:1337/api/problem-statements?populate=*')
+    .then((resp)=>{
+        res.render("ps", {data : resp.data, BASEURL : BASEURL});
+    });
+
 });
 

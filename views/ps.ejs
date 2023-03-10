@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Uploaded</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+          padding: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 100px;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        psName
+                    </td>
+                    <td>
+                        description
+                    </td>
+                    <td>
+                        image
+                    </td>
+                    <td>
+                        points
+                    </td>
+                </tr>
+                <% for(let i =0; i<data.length; i++){ %>
+                   <tr>
+                        <td>
+                            <%=data[i]['attributes']['name']%> 
+                            
+                        </td>
+                        <td>
+                            <%=data[i]['attributes']['text']%>
+                        </td>
+                        <td>
+                            <img src=<%= BASEURL + data[i]['attributes']['photo']['data']['attributes']['url'] %> alt = "unable to fetch image" width="400" height="200">
+                        </td>
+                        <td>
+                            <%=data[i]['attributes']['points']%> 
+                        </td>
+                    </tr>
+                <%}%>
+           </tbody>
+        </table>
+    </div>
+</body>
+</html>

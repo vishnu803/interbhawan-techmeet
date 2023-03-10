@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Uploaded</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+          padding: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <% for(let i =0; i<data.length; i++){ %>
+    <h3><%=data[i]['cellname']%></h3>
+    <div style="display:flex;justify-content:center;align-items:center;margin-top: 100px;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        name
+                    </td>
+                    <td>
+                        gmail
+                    </td>
+                    <td>
+                        linkedin
+                    </td>
+                    <td>
+                        image
+                    </td>
+                </tr>
+                <% for(let j =0; j<data[i]['members'].length; j++){ %>
+                   <tr>
+                        <td>
+                            <%=data[i]['members'][j]['name']%> 
+                            
+                        </td>
+                        <td>
+                            <%=data[i]['members'][j]['gmail']%>
+                        </td>
+                        <td>
+                            <%=data[i]['members'][j]['linkedin']%> 
+                        </td>
+                        <td>
+                            <img src=<%= BASEURL + data[i]['members'][j]['imageurl'] %> alt = "unable to fetch image" width="400" height="200">
+                        </td>
+                    </tr>
+                <%}%>
+           </tbody>
+        </table>
+    </div>
+    <br><br>
+    <%}%>
+</body>
+</html>
